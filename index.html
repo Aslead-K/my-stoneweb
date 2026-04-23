@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>お問い合わせ｜株式会社ASLEAD</title>
+  <meta name="description" content="石材クリーニングに関するご相談・お見積りはこちらから。株式会社ASLEAD。">
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .contact-note {
+      font-size: .82rem;
+      color: var(--ink-light);
+      line-height: 1.9;
+      margin-bottom: 40px;
+    }
+
+    /* フォーム送信ボタン */
+    .form-submit {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      background: var(--red);
+      color: var(--white);
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s;
+      font-family: var(--sans);
+    }
+
+    .form-submit:hover { background: var(--red-dark); }
+
+    .form-notice {
+      font-size: .72rem;
+      color: var(--ink-light);
+      text-align: center;
+      margin-top: 12px;
+      line-height: 1.7;
+    }
+
+    /* サイドバー */
+    .contact-side {
+      position: sticky;
+      top: calc(var(--header-h) + 24px);
+    }
+
+    .side-box {
+      border: 1.5px solid var(--stone);
+      padding: 28px 24px;
+      margin-bottom: 20px;
+    }
+
+    .side-box-title {
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ink-light);
+      margin-bottom: 12px;
+    }
+
+    .side-tel {
+      font-size: 1.3rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 4px;
+    }
+
+    .side-tel-note {
+      font-size: .72rem;
+      color: var(--ink-light);
+    }
+
+    .side-info p {
+      font-size: .8rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .contact-wrap { grid-template-columns: 1fr; }
+      .contact-side { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">
+      <span class="logo-en">ASLEAD</span>
+      <span class="logo-ja">株式会社ASLEAD</span>
+    </a>
+    <div class="header-tel">
+      03-6380-0904
+      <span>平日 9:00〜18:00</span>
+    </div>
+    <nav class="header-nav" id="nav">
+      <a href="/">TOP</a>
+      <a href="/#service">サービス</a>
+      <a href="/about/">会社概要</a>
+      <a href="/blog/">ブログ</a>
+      <a href="/contact/" class="btn-contact">お問い合わせ</a>
+    </nav>
+    <button class="menu-toggle" id="menuBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="container">
+    <a href="/">TOP</a><span>›</span>お問い合わせ
+  </div>
+</div>
+
+<div class="page-banner">
+  <div class="container">
+    <p class="page-sub">Contact</p>
+    <h1>お問い合わせ</h1>
+  </div>
+</div>
+
+<section class="section" style="background: var(--white);">
+  <div class="container">
+    <div class="contact-wrap">
+
+      <!-- フォーム本体 -->
+      <div>
+        <p class="contact-note">
+          ご相談・お見積りは無料です。下記フォームにご記入のうえ送信してください。<br>
+          内容を確認のうえ、担当者より2営業日以内にご連絡いたします。<br>
+          ※ <span style="color:var(--red);">＊</span> は必須項目です。
+        </p>
+
+        <!-- ========================================================
+             ★ 送信機能は後で実装 ★
+             Vercel Functions または外部フォームサービス
+             （Formspree / Netlify Forms 等）をここに接続してください
+             ======================================================== -->
+        <form id="contactForm" action="#" method="post" novalidate>
+
+          <div class="form-group">
+            <label for="name">お名前<span class="required">＊</span></label>
+            <input type="text" id="name" name="name" placeholder="田島 雄一" required autocomplete="name">
+          </div>
+
+          <div class="form-group">
+            <label for="company">会社名・屋号</label>
+            <input type="text" id="company" name="company" placeholder="株式会社〇〇">
+          </div>
+
+          <div class="form-group">
+            <label for="email">メールアドレス<span class="required">＊</span></label>
+            <input type="email" id="email" name="email" placeholder="example@example.com" required autocomplete="email">
+          </div>
+
+          <div class="form-group">
+            <label for="tel">電話番号</label>
+            <input type="tel" id="tel" name="tel" placeholder="03-0000-0000" autocomplete="tel">
+          </div>
+
+          <div class="form-group">
+            <label for="service">ご希望のサービス</label>
+            <select id="service" name="service">
+              <option value="">選択してください</option>
+              <option>研磨・光沢復元</option>
+              <option>補修・欠け修復</option>
+              <option>洗浄・汚れ除去</option>
+              <option>シミ抜き</option>
+              <option>錆び除去</option>
+              <option>コーティング・保護</option>
+              <option>その他・わからない</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">お問い合わせ内容<span class="required">＊</span></label>
+            <textarea id="message" name="message" placeholder="施工場所・素材の種類・お困りの状況などをできるだけ詳しくお書きください。" required></textarea>
+          </div>
+
+          <button type="submit" class="form-submit">送信する（※現在準備中）</button>
+          <p class="form-notice">
+            ※ 送信機能は現在準備中です。<br>
+            お急ぎの方はお電話（03-6380-0904）にてご連絡ください。
+          </p>
+
+        </form>
+      </div>
+
+      <!-- サイドバー -->
+      <aside class="contact-side">
+        <div class="side-box">
+          <div class="side-box-title">電話でのお問い合わせ</div>
+          <div class="side-tel">03-6380-0904</div>
+          <div class="side-tel-note">平日 9:00〜18:00（土日祝日休）</div>
+        </div>
+
+        <div class="side-box side-info">
+          <div class="side-box-title">会社情報</div>
+          <p>
+            株式会社ASLEAD<br>
+            〒160-0022<br>
+            東京都新宿区新宿1丁目36番2号<br>
+            代表：田島 雄一
+          </p>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">ASLEAD</div>
+        <p>株式会社ASLEAD</p>
+        <p style="margin-top:6px;">〒160-0022<br>東京都新宿区新宿1丁目36番2号</p>
+        <p style="margin-top:6px;">TEL：03-6380-0904</p>
+      </div>
+      <nav class="footer-links">
+        <a href="/">TOP</a>
+        <a href="/#service">サービス</a>
+        <a href="/about/">会社概要</a>
+        <a href="/blog/">ブログ</a>
+        <a href="/contact/">お問い合わせ</a>
+      </nav>
+    </div>
+    <div class="footer-copy">&copy; 2024 ASLEAD Inc. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('nav').classList.toggle('open');
+  });
+</script>
+</body>
+</html>
