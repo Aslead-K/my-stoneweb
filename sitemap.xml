@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ================================================================
+  sitemap.xml — 手動更新用テンプレート
+  ページを追加するたびに <url> ブロックをコピーして追記してください。
+  <lastmod> は更新した日付（YYYY-MM-DD）に書き換えてください。
+  ================================================================
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- トップページ -->
+  <url>
+    <loc>https://www.aslead.co.jp/</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 会社概要 -->
+  <url>
+    <loc>https://www.aslead.co.jp/about/</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- ブログ一覧 -->
+  <url>
+    <loc>https://www.aslead.co.jp/blog/</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- お問い合わせ -->
+  <url>
+    <loc>https://www.aslead.co.jp/contact/</loc>
+    <lastmod>2024-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ▼ ブログ記事を追加するときはここに追記してください ▼ -->
+  <!--
+  <url>
+    <loc>https://www.aslead.co.jp/blog/article-slug/</loc>
+    <lastmod>2024-06-15</lastmod>
+    <changefreq>never</changefreq>
+    <priority>0.6</priority>
+  </url>
+  -->
+  <!-- ▲ ここまで ▲ -->
+
+</urlset>
