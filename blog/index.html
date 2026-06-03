@@ -199,38 +199,35 @@
   const nav = document.getElementById('nav');
   btn.addEventListener('click', () => nav.classList.toggle('open'));
 
-  // GitHub APIで記事一覧を取得
   const OWNER = 'Aslead-K';
   const REPO  = 'my-stoneweb';
-  const DIR   = 'blog/posts';
+
+  // ここに記事ファイル名を追加していく
+  const POST_FILES = [
+    '2026-06-03-ブログのテスト記事.md',
+  ];
 
   async function loadPosts() {
     const grid = document.getElementById('blogGrid');
     try {
-      const res  = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DIR}`);
-      const files = await res.json();
-
-      if (!Array.isArray(files) || files.length === 0) {
+      if (POST_FILES.length === 0) {
         grid.innerHTML = '<div class="blog-empty">記事はまだありません。</div>';
         return;
       }
 
-      // 各ファイルの中身を取得
       const posts = await Promise.all(
-        files
-          .filter(f => f.name.endsWith('.md'))
-          .map(async f => {
-            const r    = await fetch(f.download_url);
-            const text = await r.text();
-            return parseFrontmatter(text, f.name);
-          })
+        POST_FILES.map(async filename => {
+          const url = `https://raw.githubusercontent.com/${OWNER}/${REPO}/main/blog/posts/${encodeURIComponent(filename)}`;
+          const r = await fetch(url);
+          const text = await r.text();
+          return parseFrontmatter(text, filename.replace('.md', ''));
+        })
       );
 
-      // 日付の新しい順に並べる
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       grid.innerHTML = posts.map(p => `
-        <a class="blog-card" href="/blog/post.html?slug=${p.slug}">
+        <a class="blog-card" href="/blog/post.html?slug=${encodeURIComponent(p.slug)}">
           ${p.thumbnail
             ? `<img class="blog-card-thumb" src="${p.thumbnail}" alt="${p.title}">`
             : `<div class="blog-card-thumb-placeholder">ASLEAD</div>`
@@ -248,17 +245,14 @@
     }
   }
 
-  function parseFrontmatter(text, filename) {
-    const slug = filename.replace('.md', '');
+  function parseFrontmatter(text, slug) {
     const match = text.match(/^---\n([\s\S]*?)\n---/);
     if (!match) return { slug, title: slug, date: '', description: '', thumbnail: '' };
-
     const fm = match[1];
     const get = key => {
       const m = fm.match(new RegExp(`^${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'));
       return m ? m[1] : '';
     };
-
     return {
       slug,
       title:       get('title')       || slug,
