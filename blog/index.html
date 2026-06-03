@@ -5,26 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ブログ｜株式会社ASLEAD</title>
   <meta name="description" content="石材クリーニングに関するお役立ち情報・施工事例をお届けします。">
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
+    .blog-hero {
+      background: var(--white);
+      padding: 60px 24px 48px;
+      text-align: center;
+      border-bottom: 1px solid var(--stone);
+    }
+    .blog-hero-label {
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--stone-dark);
+      display: block;
+      margin-bottom: 12px;
+    }
+    .blog-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 600;
+      letter-spacing: .06em;
+    }
+
+    .blog-main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px 96px;
+    }
+
     .blog-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 32px;
     }
 
     .blog-card {
       background: var(--white);
       border: 1px solid var(--stone);
-      transition: box-shadow .2s, transform .2s;
+      border-radius: 4px;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--ink);
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow .2s;
     }
-
     .blog-card:hover {
       box-shadow: 0 4px 20px rgba(0,0,0,.08);
-      transform: translateY(-3px);
     }
 
-    .blog-thumb {
+    .blog-card-thumb {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      background: var(--stone);
+      display: block;
+    }
+
+    .blog-card-thumb-placeholder {
+      width: 100%;
       aspect-ratio: 16/9;
       background: var(--stone);
       display: flex;
@@ -35,60 +77,53 @@
       letter-spacing: .1em;
     }
 
-    .blog-body {
-      padding: 20px 22px 24px;
-    }
-
-    .blog-meta {
+    .blog-card-body {
+      padding: 20px;
+      flex: 1;
       display: flex;
-      gap: 10px;
-      align-items: center;
-      font-size: .7rem;
-      color: var(--ink-light);
-      margin-bottom: 10px;
+      flex-direction: column;
     }
 
-    .blog-cat {
-      background: var(--bg);
-      border: 1px solid var(--stone-dark);
-      padding: 2px 10px;
-      border-radius: 2px;
+    .blog-card-date {
+      font-size: .72rem;
+      color: var(--ink-light);
+      margin-bottom: 8px;
       letter-spacing: .05em;
     }
 
-    .blog-title {
-      font-size: .92rem;
+    .blog-card-title {
+      font-size: .95rem;
       font-weight: 700;
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: 10px;
-      color: var(--ink);
+      letter-spacing: .03em;
     }
 
-    .blog-excerpt {
-      font-size: .78rem;
-      color: var(--ink-light);
-      line-height: 1.8;
+    .blog-card-desc {
+      font-size: .8rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      flex: 1;
     }
 
     .blog-empty {
-      grid-column: 1/-1;
       text-align: center;
-      padding: 80px 0;
       color: var(--ink-light);
       font-size: .88rem;
+      padding: 80px 0;
     }
 
-    .blog-empty strong {
-      display: block;
-      font-family: var(--serif);
-      font-size: 1.2rem;
-      color: var(--ink);
-      margin-bottom: 12px;
+    .blog-loading {
+      text-align: center;
+      color: var(--ink-light);
+      font-size: .88rem;
+      padding: 80px 0;
     }
   </style>
 </head>
 <body>
 
+<!-- ===== ヘッダー ===== -->
 <header class="site-header">
   <div class="container">
     <a href="/" class="logo">
@@ -112,50 +147,29 @@
   </div>
 </header>
 
-<div class="breadcrumb">
-  <div class="container">
-    <a href="/">TOP</a><span>›</span>ブログ
+<!-- ===== パンくず ===== -->
+<div class="breadcrumb" style="background:#fff; border-bottom:1px solid var(--stone); padding:10px 0;">
+  <div class="container" style="font-size:.75rem; color:var(--ink-light); display:flex; gap:6px; align-items:center;">
+    <a href="/" style="color:var(--ink-light); text-decoration:none;">TOP</a>
+    <span>›</span>
+    <span>ブログ</span>
   </div>
 </div>
 
-<div class="page-banner">
-  <div class="container">
-    <p class="page-sub">Blog</p>
-    <h1>ブログ</h1>
-  </div>
-</div>
-
-<section class="section">
-  <div class="container">
-    <p class="section-sub">Latest Posts</p>
-    <h2 class="section-title">お役立ち情報・施工事例</h2>
-    <div class="divider"></div>
-
-    <div class="blog-grid">
-      <!-- ▼ 記事を追加するときはここをコピーして増やしてください ▼ -->
-      <!--
-      <article class="blog-card">
-        <div class="blog-thumb">サムネイル画像</div>
-        <div class="blog-body">
-          <div class="blog-meta">
-            <span class="blog-cat">施工事例</span>
-            <time>2024-06-01</time>
-          </div>
-          <h2 class="blog-title"><a href="/blog/article-slug/">記事タイトルをここに入力</a></h2>
-          <p class="blog-excerpt">記事の概要をここに入力します。100文字程度が目安です。</p>
-        </div>
-      </article>
-      -->
-      <!-- ▲ ここまでがテンプレート ▲ -->
-
-      <div class="blog-empty">
-        <strong>記事を準備中です</strong>
-        近日公開予定です。しばらくお待ちください。
-      </div>
-    </div>
-  </div>
+<!-- ===== ページヒーロー ===== -->
+<section class="blog-hero">
+  <span class="blog-hero-label">Blog</span>
+  <h1>ブログ</h1>
 </section>
 
+<!-- ===== 記事一覧 ===== -->
+<main class="blog-main">
+  <div id="blogGrid" class="blog-grid">
+    <div class="blog-loading">記事を読み込み中...</div>
+  </div>
+</main>
+
+<!-- ===== フッター ===== -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-inner">
@@ -173,14 +187,95 @@
         <a href="/contact/">お問い合わせ</a>
       </nav>
     </div>
-    <div class="footer-copy">&copy; 2024 ASLEAD Inc. All Rights Reserved.</div>
+    <div class="footer-copy">
+      &copy; 2024 ASLEAD Inc. All Rights Reserved.
+    </div>
   </div>
 </footer>
 
 <script>
-  document.getElementById('menuBtn').addEventListener('click', () => {
-    document.getElementById('nav').classList.toggle('open');
-  });
+  // ハンバーガーメニュー
+  const btn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+
+  // GitHub APIで記事一覧を取得
+  const OWNER = 'Aslead-K';
+  const REPO  = 'my-stoneweb';
+  const DIR   = 'blog/posts';
+
+  async function loadPosts() {
+    const grid = document.getElementById('blogGrid');
+    try {
+      const res  = await fetch(`https://api.github.com/repos/${OWNER}/${REPO}/contents/${DIR}`);
+      const files = await res.json();
+
+      if (!Array.isArray(files) || files.length === 0) {
+        grid.innerHTML = '<div class="blog-empty">記事はまだありません。</div>';
+        return;
+      }
+
+      // 各ファイルの中身を取得
+      const posts = await Promise.all(
+        files
+          .filter(f => f.name.endsWith('.md'))
+          .map(async f => {
+            const r    = await fetch(f.download_url);
+            const text = await r.text();
+            return parseFrontmatter(text, f.name);
+          })
+      );
+
+      // 日付の新しい順に並べる
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      grid.innerHTML = posts.map(p => `
+        <a class="blog-card" href="/blog/post.html?slug=${p.slug}">
+          ${p.thumbnail
+            ? `<img class="blog-card-thumb" src="${p.thumbnail}" alt="${p.title}">`
+            : `<div class="blog-card-thumb-placeholder">ASLEAD</div>`
+          }
+          <div class="blog-card-body">
+            <div class="blog-card-date">${formatDate(p.date)}</div>
+            <div class="blog-card-title">${p.title}</div>
+            ${p.description ? `<div class="blog-card-desc">${p.description}</div>` : ''}
+          </div>
+        </a>
+      `).join('');
+
+    } catch(e) {
+      grid.innerHTML = '<div class="blog-empty">記事の読み込みに失敗しました。</div>';
+    }
+  }
+
+  function parseFrontmatter(text, filename) {
+    const slug = filename.replace('.md', '');
+    const match = text.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) return { slug, title: slug, date: '', description: '', thumbnail: '' };
+
+    const fm = match[1];
+    const get = key => {
+      const m = fm.match(new RegExp(`^${key}:\\s*["']?(.+?)["']?\\s*$`, 'm'));
+      return m ? m[1] : '';
+    };
+
+    return {
+      slug,
+      title:       get('title')       || slug,
+      date:        get('date')        || '',
+      description: get('description') || '',
+      thumbnail:   get('thumbnail')   || '',
+    };
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return '';
+    const d = new Date(dateStr);
+    return `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日`;
+  }
+
+  loadPosts();
 </script>
+
 </body>
 </html>
