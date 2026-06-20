@@ -4,4 +4,27 @@ Allow: /
 # noindexページはクロール対象から除外
 Disallow: /contact/thanks/
 
+# ===== AIクローラー（生成AI検索・学習用）への明示的な許可 =====
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
 Sitemap: https://stone.aslead.me/sitemap.xml
