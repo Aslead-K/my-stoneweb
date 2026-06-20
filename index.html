@@ -26,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="石材・タイル専門クリーニング｜東京・新宿｜株式会社ASLEAD">
-  <meta name="twitter:description" content="石材・タイルの研磨・補修・シミ抜き・錆び除去は専門業者へ。12年・6000以上の実績。東京・新宿区拠点。現地診断・お見積り無料。">
+  <meta name="twitter:description" content="石材・タイルの研磨・補修・シミ抜き・錆び除去は専門業者へ。12年・6000件以上の実績。東京・新宿区拠点。現地診断・お見積り無料。">
   <meta name="twitter:image" content="https://stone.aslead.me/ogp-image.jpg">
 
   <!-- 構造化データ：LocalBusiness -->
@@ -61,7 +61,9 @@
     "areaServed": ["東京都","神奈川県","埼玉県","千葉県"],
     "priceRange": "お見積り無料",
     "image": "https://stone.aslead.me/ogp-image.jpg",
-    "sameAs": []
+    "sameAs": [
+      "https://share.google/Tfv1aYY6esafvVUGY"
+    ]
   }
   </script>
 
@@ -347,6 +349,7 @@
       .hero-actions { flex-direction: column; }
     }
   </style>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
 
@@ -513,6 +516,7 @@
       <span class="tag">コンクリート</span>
       <span class="tag">テラコッタ</span>
       <span class="tag">スレート</span>
+      <span class="tag">トラバーチン</span>
     </div>
 
     <p style="font-size:.82rem; color:var(--ink-light);">※上記以外の素材についてもお気軽にご相談ください。</p>
@@ -577,6 +581,17 @@
   btn.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
+</script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
 </script>
 </body>
 </html>
