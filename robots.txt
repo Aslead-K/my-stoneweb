@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.stone.aslead.me/sitemap.xml
+# noindexページはクロール対象から除外
+Disallow: /contact/thanks/
+
+Sitemap: https://stone.aslead.me/sitemap.xml
