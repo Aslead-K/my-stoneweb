@@ -252,29 +252,26 @@
     .ba-label {
       position: absolute;
       top: 0;
-      bottom: 0;
-      width: 88px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-family: var(--serif);
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      letter-spacing: .18em;
-      writing-mode: horizontal-tb;
+      letter-spacing: .06em;
       z-index: 3;
+      padding: 10px 24px;
     }
 
     .ba-label-before {
       left: 0;
       background: rgba(8,8,8,.82);
       color: #fff;
+      border-bottom-right-radius: 8px;
     }
 
     .ba-label-after {
       right: 0;
-      background: linear-gradient(180deg, var(--gold-dark), var(--gold));
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold));
       color: #fff;
+      border-bottom-left-radius: 8px;
     }
 
     .ba-divider {
@@ -419,7 +416,7 @@
       .proof-row2 { grid-template-columns: repeat(2, 1fr); gap: 10px; }
       .scope-row { gap: 8px; }
       .scope-pill { font-size: .78rem; padding: 8px 14px; }
-      .ba-label { font-size: 1.1rem; width: 64px; }
+      .ba-label { font-size: 1rem; padding: 8px 16px; }
       .hero2-inner { padding: 36px 0 44px; }
       .hero2-frame, .hero2-frame-b { inset: 8px; }
     }
@@ -678,12 +675,12 @@
     <!-- Before/After 左右並び -->
     <div class="ba-side">
       <div class="ba-side-item">
-        <div class="ba-label ba-label-before">BEFORE</div>
+        <div class="ba-label ba-label-before">Before</div>
         <img src="hero-before.jpg" alt="石材クリーニング施工前｜黒ずみ汚れが目立つエントランス床">
         <div class="ba-divider"></div>
       </div>
       <div class="ba-side-item">
-        <div class="ba-label ba-label-after">AFTER</div>
+        <div class="ba-label ba-label-after">After</div>
         <img src="hero-after.jpg" alt="石材クリーニング施工後｜光沢が回復したエントランス床（株式会社ASLEAD施工実績）">
       </div>
     </div>
