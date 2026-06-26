@@ -156,7 +156,16 @@
       position: relative;
       z-index: 3;
       text-align: center;
-      padding: 52px 0 56px;
+      padding: 52px 0 0;
+    }
+
+    .hero2-inner-bottom {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 0 24px 56px;
+      max-width: 1180px;
+      margin: 0 auto;
     }
 
     /* バッジ */
@@ -228,7 +237,7 @@
     .ba-side {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      max-width: 980px;
+      max-width: 100%;
       margin: 0 auto 12px;
       border-radius: 6px;
       overflow: hidden;
@@ -238,7 +247,7 @@
 
     .ba-side-item {
       position: relative;
-      aspect-ratio: 4/3;
+      aspect-ratio: 16/9;
       overflow: hidden;
     }
 
@@ -672,18 +681,22 @@
 
     <p class="hero2-sub">大手ビルメンテナンス会社でも解決できない石材トラブルに対応</p>
 
-    <!-- Before/After 左右並び -->
-    <div class="ba-side">
-      <div class="ba-side-item">
-        <div class="ba-label ba-label-before">Before</div>
-        <img src="hero-before.jpg" alt="石材クリーニング施工前｜黒ずみ汚れが目立つエントランス床">
-        <div class="ba-divider"></div>
-      </div>
-      <div class="ba-side-item">
-        <div class="ba-label ba-label-after">After</div>
-        <img src="hero-after.jpg" alt="石材クリーニング施工後｜光沢が回復したエントランス床（株式会社ASLEAD施工実績）">
-      </div>
+  </div><!-- /.container hero2-inner（上部テキストここまで） -->
+
+  <!-- Before/After 左右並び：全幅表示 -->
+  <div class="ba-side">
+    <div class="ba-side-item">
+      <div class="ba-label ba-label-before">Before</div>
+      <img src="hero-before.jpg" alt="石材クリーニング施工前｜黒ずみ汚れが目立つエントランス床">
+      <div class="ba-divider"></div>
     </div>
+    <div class="ba-side-item">
+      <div class="ba-label ba-label-after">After</div>
+      <img src="hero-after.jpg" alt="石材クリーニング施工後｜光沢が回復したエントランス床（株式会社ASLEAD施工実績）">
+    </div>
+  </div>
+
+  <div class="container hero2-inner-bottom">
     <p class="ba-caption2">実際の施工事例（エントランス床・石材クリーニング）</p>
 
     <!-- 対応先バッジ -->
@@ -735,7 +748,7 @@
       <a href="#service" class="btn-ghost2">サービス一覧を見る</a>
     </div>
 
-  </div>
+  </div><!-- /.container hero2-inner-bottom -->
 </section>
 
 <!-- ===== 実績ストリップ ===== -->
